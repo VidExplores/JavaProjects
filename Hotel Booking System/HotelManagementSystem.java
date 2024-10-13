@@ -76,6 +76,14 @@ class Booking {
         room.setAvailable(false); 
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
     public void cancelBooking() {
         room.setAvailable(true);
         System.out.println("Booking for " + customerName + " has been canceled.");
@@ -125,7 +133,7 @@ public class HotelManagementSystem {
 
     public void cancelBooking(int roomNumber, String customerName) {
         for (Booking booking : bookings) {
-            if (booking.room.getRoomNumber() == roomNumber && booking.customerName.equals(customerName)) {
+            if (booking.getRoom().getRoomNumber() == roomNumber && booking.getCustomerName().equals(customerName)) {
                 booking.cancelBooking();
                 bookings.remove(booking);
                 return;
