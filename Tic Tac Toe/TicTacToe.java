@@ -18,8 +18,12 @@ class TicTacToe {
       System.out.print("Player " + player + " enter: ");
       int row = scanner.nextInt();
       int col = scanner.nextInt();
-      System.out.println();
-
+      while(row>=board.length || col>=board[0].length)
+      {
+          System.out.print("invalid input!!\nPlayer " + player + " enter: ");
+          row = scanner.nextInt();
+          col = scanner.nextInt();
+      }System.out.println();
       if (board[row][col] == ' ') {
         board[row][col] = player; // place the element
         gameOver = haveWon(board, player);
@@ -34,6 +38,10 @@ class TicTacToe {
       if(isFull(board))
       {
           System.out.println("Game Over!! Tie\nNew Game\n");
+          System.out.println("Play Again?(Y|N)");
+          char c=scanner.next().charAt(0);
+          if(c=='N' || c=='n')
+          gameOver=true;
           for(char[] ch:board)
           {
               Arrays.fill(ch,' ');
