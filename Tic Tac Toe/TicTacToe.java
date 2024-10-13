@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 class TicTacToe {
   public static void main(String[] args) {
@@ -31,10 +31,29 @@ class TicTacToe {
       } else {
         System.out.println("Invalid move. Try again!");
       }
+      if(isFull(board))
+      {
+          System.out.println("Game Over!! Tie\nNew Game\n");
+          for(char[] ch:board)
+          {
+              Arrays.fill(ch,' ');
+              player='X';
+          }
+      }
     }
     printBoard(board);
   }
-
+  public static boolean isFull(char [][]board)
+  {
+      for(int i=0;i<board.length;i++)
+      {
+          for(int j=0;j<board[i].length;j++)
+          {
+              if(board[i][j]==' ')
+              return false;
+          }
+      }return true;
+  }
   public static boolean haveWon(char[][] board, char player) {
     // check the rows
     for (int row = 0; row < board.length; row++) {
@@ -59,6 +78,7 @@ class TicTacToe {
       return true;
     }
     return false;
+    
   }
 
   public static void printBoard(char[][] board) {
